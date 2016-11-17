@@ -4,7 +4,6 @@ from __future__ import print_function
 import cloudflare_call
 import cloudflare_cli
 import cloudflare_filter_records
-import cloudflare_proxy_setting
 import cloudflare_yaml_io
 
 
@@ -18,7 +17,7 @@ def main():
     filter_list_dict = cloudflare_filter_records.filter_stack(
         zone_record_dict, cli_arg_params['domain'], cli_arg_params['stack'])
 
-    #cloudflare_proxy_setting.get_record_info(cloudflare_details_params,
+    # cloudflare_proxy_setting.get_record_info(cloudflare_details_params,
     #                                         filter_list_dict, cli_arg_params)
 
     print(filter_list_dict)
