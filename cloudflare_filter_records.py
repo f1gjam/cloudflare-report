@@ -16,15 +16,12 @@ def filter_stack(zone_record_dict, domain, stack):
                 for k in record:
                     content = record[k]['content']
                     if stack == 'dm':
-                        x = 'dm[^\d]'
-                        if re.search(x, content, re.IGNORECASE) and \
-                                record[k]['type'] == 'CNAME' and \
-                                re.search(domain, content, re.IGNORECASE):
+                        x = 'dm' + '.' + domain
+                        if re.match(x, content, re.IGNORECASE):
                             filter_list_dict.append(record)
                     else:
-                        if re.search(stack, content, re.IGNORECASE) \
-                                and record[k]['type'] == 'CNAME' and \
-                                re.search(domain, content, re.IGNORECASE):
+                        x = stack + '.' + domain
+                        if re.match(x, content, re.IGNORECASE):
                             filter_list_dict.append(record)
             return filter_list_dict
 
